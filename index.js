@@ -120,6 +120,8 @@
 			else{
 				this.origin = 'null';
 			}
+
+			this.href = this.toString();
 		},
 
 		get search(){
