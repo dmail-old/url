@@ -5,5 +5,11 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/dmail/url"
+	},
+	"devDependencies": {
+		"@dmail/url-search-params": "git+https://github.com/dmail/url-search-params"
+	},
+	"scripts": {
+		"test": "node test"
 	}
 }

@@ -28,12 +28,6 @@
 				search   : match[8] || '',
 				hash     : match[9] || ''
 			};
-
-			if( parsed.protocol === 'file:' ){
-				parsed.pathname = '/' + parsed.hostname + ':' + parsed.pathname;
-				parsed.host = '';
-				parsed.hostname = '';
-			}
 		}
 		else{
 			throw new RangeError();
@@ -60,8 +54,8 @@
 	}
 
 	var URL = {
-		constructor: function(url, base){
-			url = parseURL(url);
+		constructor: function(urlString, base){
+			var url = parseURL(urlString);
 
 			if( arguments.length > 1 ){
 				base = parseURL(base);
