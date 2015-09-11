@@ -13,7 +13,6 @@
 		"@dmail/url-search-params": "git+https://github.com/dmail/url-search-params"
 	},
 	"scripts": {
-		"test": "node test",
-		"postinstall": "postlink"
+		"test": "node test"
 	}
 }
