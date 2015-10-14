@@ -2,6 +2,7 @@
 	"name": "@dmail/url",
 	"version": "0.0.1",
 	"description": "URL polyfill",
+	"license": "UNLICENSED",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/dmail/url"
