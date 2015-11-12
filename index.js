@@ -28,6 +28,16 @@
 				search   : match[8] || '',
 				hash     : match[9] || ''
 			};
+
+			if( parsed.protocol === 'file:' ){
+				parsed.origin = 'null';
+				parsed.host = '';
+			}
+			else{
+				parsed.origin = parsed.protocol;
+				if( parsed.protocol || parsed.host ) parsed.origin+= '//';
+				parsed.origin+= parsed.host;
+			}
 		}
 		else{
 			throw new RangeError();
@@ -78,6 +88,11 @@
 
 					url.pathname = pathname;
 				}
+				else if( base.protocol == 'file:' &&  urlString[0] === '/' && urlString[1] === '/' ){
+					url.pathname = '/' + url.host + url.pathname;
+					url.host = '';
+					url.hostname = '';
+				}
 
 				url.pathname = removeDotSegments(url.pathname);
 
@@ -92,6 +107,7 @@
 				if( url.protocol === '' ){
 					url.protocol = base.protocol;
 				}
+				url.origin = base.origin;
 			}
 
 			this.searchParams = new global.URLSearchParams();
@@ -101,19 +117,11 @@
 			this.password = url.password;
 			this.host = url.host;
 			this.hostname = url.hostname;
+			this.origin = url.origin;
 			this.port = url.port;
 			this.pathname = url.pathname;
 			this.search = url.search;
 			this.hash = url.hash;
-
-			if( this.protocol != 'file:' ){
-				this.origin = this.protocol;
-				if( this.protocol || this.host ) this.origin+= '//';
-				this.origin+= this.host;
-			}
-			else{
-				this.origin = 'null';
-			}
 
 			this.href = this.toString();
 		},
