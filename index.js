@@ -4,7 +4,7 @@
 	// https://gist.github.com/Yaffle/1088850
 	function parseURL(url){
 		if( url == null ) throw new TypeError(url + ' is not a valid url');
-		if( typeof url === 'object' ) return url;
+		if( url instanceof URL ) return url;
 
 		url = String(url);
 		url = url.replace(/^\s+|\s+$/g, ''); // trim
