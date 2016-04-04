@@ -116,8 +116,6 @@
                 url.origin = base.origin;
             }
 
-            this.searchParams = new global.URLSearchParams();
-
             this.protocol = url.protocol;
             this.username = url.username;
             this.password = url.password;
@@ -130,21 +128,6 @@
             this.hash = url.hash;
 
             this.href = this.toString();
-        },
-
-        get search() {
-            var search = this.searchParams.toString();
-            if (search) {
-                search = '?' + search;
-            }
-            return search;
-        },
-
-        set search(value) {
-            if (value[0] === '?') {
-                value = value.slice(1);
-            }
-            this.searchParams.fromString(value);
         },
 
         toString: function() {
